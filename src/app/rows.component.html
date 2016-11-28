@@ -1,22 +1,22 @@
 <h2>My Rows</h2>
-<!--<div>
+<div>
   <label>Row name:</label> <input #rowName />
   <button (click)="add(rowName.value); rowName.value=''">
     Add
   </button>
-</div>-->
+</div>
 <ul class="rows">
   <li *ngFor="let row of rows" [class.selected]="row === selectedRow" (click)="onSelect(row)">
     <span class="badge">{{row.id}}</span>
     <span>{{row.wbscode}}</span>
     <span>{{row.description}}</span>
     <span>{{row.pv}}</span>
-    <button class="delete" (click)="delete(row); $event.stopPropagation()">x</button>
+    <!--<button class="delete" (click)="delete(row); $event.stopPropagation()">x</button>-->
   </li>
 </ul>
 <div *ngIf="selectedRow">
   <h2>
-    {{selectedRow.name | uppercase}} is my Selected Row!!
+    {{selectedRow.wbscode | uppercase}} is my Selected Row!!
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>
