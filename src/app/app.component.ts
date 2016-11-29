@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Row } from './row';
 import { RowService } from './row.service';
-
+//import { NgSwitch } from '@angular/directives';
 
 @Component({
   selector: 'app-root',

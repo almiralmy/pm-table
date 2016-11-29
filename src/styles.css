@@ -4,8 +4,15 @@
   background-color: #ddd;
 }
 
+.list-group-item .actions {
+  display:inline;
+}
+
+.list-group-item .element {
+  display:inline;
+}
+
 .list-group-item.false {
-  opacity: 0.5;
   pointer-events: none;
   background: #ccc;
 }

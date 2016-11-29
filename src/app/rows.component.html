@@ -7,11 +7,17 @@
 </div>
 <ul class="row"  [dragula]='"bag-one"' [dragulaModel]='rows'>
   <li *ngFor="let row of rows" draggable="true" [class.selected]="row === selectedRow" (click)="onSelect(row)" class="list-group-item {{row.enabled}}">
-    <span class="badge">{{row.id}}</span>
-    <span>{{row.wbscode}}</span>
-    <inline-editor type="text" [(ngModel)]="row.description" (onSave)="saveEditable($event)" name="editableText1" size="8" min="3" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>
-    <!--<span>{{row.description}}</span>-->
-    <span>{{row.pv}}</span>
+    <div [ngSwitch]="row.enabled" class="actions">
+      <template [ngSwitchCase]="true"><button (click)="disable(row)">Disable Row</button></template>
+      <!--<template [ngSwitchCase]="false"><button  (click)="enable(row)">Enable Row</button></template>-->
+    </div>
+    <div class="element">
+      <span>{{row.id}}</span>
+      <span>{{row.wbscode}}</span>
+      <inline-editor type="text" [(ngModel)]="row.description" (onSave)="saveEditable($event)" name="editableText1" size="8" min="3" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>
+      <!--<span>{{row.description}}</span>-->
+      <span>{{row.pv}}</span>
+    </div>
     <!--<button class="delete" (click)="delete(row); $event.stopPropagation()">x</button>-->
   </li>
 </ul>
