@@ -11,7 +11,8 @@ import { AppComponent } from './app.component';
 import { RowsComponent } from './rows.component';
 import { RowService } from './row.service';
 
-import {InlineEditorModule} from 'ng2-inline-editor';
+import { InlineEditorModule } from 'ng2-inline-editor';
+import { DragulaModule } from '../assets/ng2-dragula/ng2-dragula'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {InlineEditorModule} from 'ng2-inline-editor';
     FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    InlineEditorModule
+    InlineEditorModule,
+    DragulaModule
   ],
   providers: [RowService],
   bootstrap: [AppComponent]
