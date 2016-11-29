@@ -6,7 +6,7 @@
   </button>
 </div>
 <ul class="row"  [dragula]='"bag-one"' [dragulaModel]='rows'>
-  <li *ngFor="let row of rows" draggable="true" [class.selected]="row === selectedRow" (click)="onSelect(row)" class="list-group-item">
+  <li *ngFor="let row of rows" draggable="true" [class.selected]="row === selectedRow" (click)="onSelect(row)" class="list-group-item {{row.enabled}}">
     <span class="badge">{{row.id}}</span>
     <span>{{row.wbscode}}</span>
     <inline-editor type="text" [(ngModel)]="row.description" (onSave)="saveEditable($event)" name="editableText1" size="8" min="3" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>

@@ -1,3 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 /* Prevent the text contents of draggable elements from being selectable. */
- .list-group-item.gu-transit {background-color: #ddd;}
+.list-group-item.gu-transit {
+  background-color: #ddd;
+}
+
+.list-group-item.false {
+  opacity: 0.5;
+  pointer-events: none;
+  background: #ccc;
+}

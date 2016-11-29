@@ -3,4 +3,5 @@ export class Row {
   wbscode: string;
   description: string;
   pv: number;
+  enabled: boolean;
 }
