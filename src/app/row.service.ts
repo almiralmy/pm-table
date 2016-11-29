@@ -7,7 +7,7 @@ import { ROWS } from './mock-rows';
 @Injectable()
 export class RowService {
 
-  private rowsUrl = '';
+  private rowsUrl = 'app/rows';
   private headers = new Headers({'Content-Type':'application/json'});
 
   constructor(
