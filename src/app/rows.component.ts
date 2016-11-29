@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Row } from './row';
 import { RowService } from './row.service';
+//import { InlineEditorDirectives } from 'ng2-inline-editor';
 
 @Component({
   //moduleId: module.id,
@@ -37,6 +38,11 @@ export class RowsComponent implements OnInit {
         this.rows.push(row);
         this.selectedRow = null;
       });
+  }
+
+  saveEditable(value) {
+    // call to http server
+    console.log('http.server: ' + value);
   }
 
   /*delete(row: Row): void {

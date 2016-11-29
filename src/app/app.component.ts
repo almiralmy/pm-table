@@ -27,4 +27,9 @@ export class AppComponent implements OnInit {
   onSelect(row: Row): void {
     this.selectedRow = row;
   }
+
+  fnErrorLength = function () {
+   alert('This is a custom error!');
+ };
+
 }

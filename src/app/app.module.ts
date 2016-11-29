@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { RowsComponent } from './rows.component';
 import { RowService } from './row.service';
 
+import {InlineEditorModule} from 'ng2-inline-editor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { RowService } from './row.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    InlineEditorModule
   ],
   providers: [RowService],
   bootstrap: [AppComponent]

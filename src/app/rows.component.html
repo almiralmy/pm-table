@@ -9,7 +9,8 @@
   <li *ngFor="let row of rows" [class.selected]="row === selectedRow" (click)="onSelect(row)">
     <span class="badge">{{row.id}}</span>
     <span>{{row.wbscode}}</span>
-    <span>{{row.description}}</span>
+    <inline-editor type="text" [(ngModel)]="row.description" (onSave)="saveEditable($event)" name="editableText1" size="8" min="3" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>
+    <!--<span>{{row.description}}</span>-->
     <span>{{row.pv}}</span>
     <!--<button class="delete" (click)="delete(row); $event.stopPropagation()">x</button>-->
   </li>
