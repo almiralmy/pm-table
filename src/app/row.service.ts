@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Row } from './row';
-import { ROWS } from './mock-rows';
+//import { ROWS } from './mock-rows';
 
 @Injectable()
 export class RowService {
@@ -15,7 +15,11 @@ export class RowService {
   ){}
 
   getRows(): Promise<Row[]>{
-    return Promise.resolve(ROWS);
+    //return Promise.resolve(ROWS);
+    return this.http.get(this.rowsUrl)
+      .toPromise()
+      .then(res => res.json().data as Row[])
+      .catch(this.handleError);
   }
 
   create(wbscode: string): Promise<Row> {
@@ -23,6 +27,15 @@ export class RowService {
       .post(this.rowsUrl, JSON.stringify({wbscode: wbscode}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
+      .catch(this.handleError);
+  }
+
+  disable(id: number): Promise<Row> {
+    const url = `${this.rowsUrl}/${id}`;
+    console.log(url);
+    return this.http.put(url, JSON.stringify({id: id}), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json())
       .catch(this.handleError);
   }
 

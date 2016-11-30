@@ -45,6 +45,14 @@ export class RowsComponent implements OnInit {
     console.log('http.server: ' + value);
   }
 
+  disable(row: Row): void {
+    console.log('Disable row with id: ' + row.id);
+    row.enabled = false;
+    this.rowService
+      .disable(row.id)
+      .then();
+  }
+
   /*delete(row: Row): void {
     this.rowService
       .delete(row.id)
