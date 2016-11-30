@@ -9,7 +9,7 @@
   <li *ngFor="let row of rows" draggable="true" [class.selected]="row === selectedRow" (click)="onSelect(row)" class="list-group-item {{row.enabled}}">
     <div [ngSwitch]="row.enabled" class="actions">
       <template [ngSwitchCase]="true"><button (click)="disable(row)">Disable Row</button></template>
-      <!--<template [ngSwitchCase]="false"><button  (click)="enable(row)">Enable Row</button></template>-->
+      <template [ngSwitchCase]="false"><button  (click)="enable(row)">Enable Row</button></template>
     </div>
     <div class="element">
       <span>{{row.id}}</span>

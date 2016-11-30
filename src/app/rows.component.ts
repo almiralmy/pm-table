@@ -53,6 +53,14 @@ export class RowsComponent implements OnInit {
       .then();
   }
 
+  enable(row: Row): void {
+    console.log('Enable row with id: ' + row.id);
+    row.enabled = true;
+    this.rowService
+      .enable(row.id)
+      .then();
+  }
+
   /*delete(row: Row): void {
     this.rowService
       .delete(row.id)

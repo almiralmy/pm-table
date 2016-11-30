@@ -12,7 +12,7 @@
   display:inline;
 }
 
-.list-group-item.false {
+.list-group-item.false .element {
   pointer-events: none;
   background: #ccc;
 }

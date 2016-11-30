@@ -39,6 +39,15 @@ export class RowService {
       .catch(this.handleError);
   }
 
+  enable(id: number): Promise<Row> {
+    const url = `${this.rowsUrl}/${id}`;
+    console.log(url);
+    return this.http.put(url, JSON.stringify({id: id}), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json())
+      .catch(this.handleError);
+  }
+
   /*
   delete(id: number): Promise<void> {
     const url = `${this.rowsUrl}/${id}`;
