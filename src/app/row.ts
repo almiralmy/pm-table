@@ -4,4 +4,8 @@ export class Row {
   description: string;
   pv: number;
   enabled: boolean;
+  progress: number;
+  ev:number;
+  ac:number;
+  cv:number;
 }

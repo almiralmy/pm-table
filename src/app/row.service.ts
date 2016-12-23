@@ -15,8 +15,14 @@ export class RowService {
   ){}
 
   getRows(): Promise<Row[]>{
-    //return Promise.resolve(ROWS);
     return this.http.get(this.rowsUrl)
+      .toPromise()
+      .then(res => res.json().data as Row[])
+      .catch(this.handleError);
+  }
+
+  getProgress(): Promise<Row[]>{
+    return this.http.get('./progress-mock.json')
       .toPromise()
       .then(res => res.json().data as Row[])
       .catch(this.handleError);
@@ -24,7 +30,7 @@ export class RowService {
 
   create(wbscode: string): Promise<Row> {
     return this.http
-      .post(this.rowsUrl, JSON.stringify({wbscode: wbscode}), {headers: this.headers})
+      .post(this.rowsUrl, JSON.stringify({wbscode: wbscode, enabled: true}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);

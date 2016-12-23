@@ -12,7 +12,15 @@
   display:inline;
 }
 
-.list-group-item.false .element {
-  pointer-events: none;
+.list-group-item.false {
   background: #ccc;
+}
+
+.list-group-item.false .element{
+  pointer-events: none;
+}
+
+.list-group-item.title{
+  height: 50px;
+  font-weight: bold;
 }

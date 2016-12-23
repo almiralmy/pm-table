@@ -20,6 +20,10 @@ export class RowsComponent implements OnInit {
     this.rowService
       .getRows()
       .then(rows => this.rows = rows);
+      //TODO
+    this.rowService
+      .getProgress()
+      .then(rows => this.rows = rows);
   }
 
   ngOnInit(): void {

@@ -5,18 +5,33 @@
     Add
   </button>
 </div>
-<ul class="row"  [dragula]='"bag-one"' [dragulaModel]='rows'>
+<ul class="list-group row"  [dragula]='"bag-one"' [dragulaModel]='rows'>
+  <li class="list-group-item title">
+    <div class="col-md-1"></div>
+    <div class="col-md-1">ID</div>
+    <div class="col-md-1">WBSCODE</div>
+    <div class="col-md-4">DESCRIPTION</div>
+    <div class="col-md-1">P.V.</div>
+    <div class="col-md-1">% PRG</div>
+    <div class="col-md-1">E.V.</div>
+    <div class="col-md-1">A.C.</div>
+    <div class="col-md-1">C.V.</div>
+  </li>
   <li *ngFor="let row of rows" draggable="true" [class.selected]="row === selectedRow" (click)="onSelect(row)" class="list-group-item {{row.enabled}}">
-    <div [ngSwitch]="row.enabled" class="actions">
+    <div [ngSwitch]="row.enabled" class="actions col-md-1">
       <template [ngSwitchCase]="true"><button (click)="disable(row)">Disable Row</button></template>
       <template [ngSwitchCase]="false"><button  (click)="enable(row)">Enable Row</button></template>
     </div>
-    <div class="element">
-      <span>{{row.id}}</span>
-      <span>{{row.wbscode}}</span>
-      <inline-editor type="text" [(ngModel)]="row.description" (onSave)="saveEditable($event)" name="editableText1" size="8" min="3" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>
+    <div class="element row">
+      <div class="col-md-1">{{row.id}}</div>
+      <div class="col-md-1">{{row.wbscode}}</div>
+      <inline-editor class="col-md-4" type="text" [(ngModel)]="row.description" (onSave)="saveEditable($event)" name="editableText1" size="8" min="3" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>
       <!--<span>{{row.description}}</span>-->
-      <span>{{row.pv}}</span>
+      <div class="col-md-1">{{row.pv}}</div>
+      <div class="col-md-1">{{row.progress}}</div>
+      <div class="col-md-1">{{row.ev}}</div>
+      <div class="col-md-1">{{row.ac}}</div>
+      <div class="col-md-1">{{row.cv}}</div>
     </div>
     <!--<button class="delete" (click)="delete(row); $event.stopPropagation()">x</button>-->
   </li>
