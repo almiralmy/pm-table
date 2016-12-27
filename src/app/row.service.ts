@@ -15,6 +15,7 @@ export class RowService {
   ){}
 
   getRows(): Promise<Row[]>{
+    console.log("Service Start Rows");
     return this.http.get('app/rows-mock.json')
       .toPromise()
       .then(res => res.json().data as Row[])
@@ -22,6 +23,7 @@ export class RowService {
   }
 
   getProgress(): Promise<Row[]>{
+    console.log("Service Start Progress");
     return this.http.get('app/progress-mock.json')
       .toPromise()
       .then(res => res.json().data as Row[])

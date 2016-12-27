@@ -38,7 +38,7 @@ export class RowsComponent implements OnInit {
     this.getRows();
     this.getProgress();
   }
-  
+
   onSelect(row: Row): void {
     this.selectedRow = row;
   }

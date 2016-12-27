@@ -12,23 +12,25 @@ import { RowService } from './row.service';
 export class AppComponent implements OnInit {
 
   title = 'app works!';
-  rows: Row[];
-  progress: Row[];
+  //rows: Row[];
+  //progress: Row[];
   selectedRow: Row;
 
   constructor(private rowService: RowService){}
 
   getRows(): void{
-    this.rowService.getRows().then(rows => this.rows = rows);
+    console.log("component start rows")
+  //  this.rowService.getRows().then(rows => this.rows = rows);
   }
 
   getProgress(): void{
-    this.rowService.getProgress().then(progress => this.progress = progress);
+    console.log("component start progress")
+  //  this.rowService.getProgress().then(progress => this.progress = progress);
   }
 
   ngOnInit(): void {
-    this.getRows();
-    this.getProgress();
+  //  this.getRows();
+  //  this.getProgress();
   }
 
   onSelect(row: Row): void {
