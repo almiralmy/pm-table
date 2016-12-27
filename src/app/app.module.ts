@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+//import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+//import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { RowsComponent } from './rows.component';
@@ -23,7 +23,7 @@ import { DragulaModule } from '../assets/ng2-dragula/ng2-dragula'
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    //InMemoryWebApiModule.forRoot(InMemoryDataService),
     InlineEditorModule,
     DragulaModule
   ],

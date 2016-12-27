@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Row } from './row';
+//import { Rowprogress } from './rowprogress';
 import { RowService } from './row.service';
 //import { InlineEditorDirectives } from 'ng2-inline-editor';
 
@@ -12,24 +13,32 @@ import { RowService } from './row.service';
 })
 export class RowsComponent implements OnInit {
   rows: Row[];
+  progress: Row[];
   selectedRow: Row;
 
   constructor(private rowService: RowService){}
 
   getRows(): void {
+    console.log("Rows Start");
     this.rowService
       .getRows()
       .then(rows => this.rows = rows);
-      //TODO
+      console.log("Rows End");
+  }
+
+  getProgress(): void {
+    console.log("Progress Start");
     this.rowService
       .getProgress()
-      .then(rows => this.rows = rows);
+      .then(progress => this.progress = progress);
+      console.log("Progress End");
   }
 
   ngOnInit(): void {
     this.getRows();
+    this.getProgress();
   }
-
+  
   onSelect(row: Row): void {
     this.selectedRow = row;
   }

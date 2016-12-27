@@ -1,44 +1,44 @@
 {
-  "progress":[
+  "data":[
     {
       "id":1,
-      "perc":25
+      "progress":25
     },
     {
       "id":2,
-      "perc":50
+      "progress":50
     },
     {
       "id":3,
-      "perc":65
+      "progress":65
     },
     {
       "id":4,
-      "perc":100
+      "progress":100
     },
     {
       "id":5,
-      "perc":0
+      "progress":0
     },
     {
       "id":6,
-      "perc":100
+      "progress":100
     },
     {
       "id":7,
-      "perc":0
+      "progress":0
     },
     {
       "id":8,
-      "perc":80
+      "progress":80
     },
     {
       "id":9,
-      "perc":95
+      "progress":95
     },
     {
       "id":10,
-      "perc":40
+      "progress":40
     }
   ]
 }

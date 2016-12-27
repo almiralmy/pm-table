@@ -15,18 +15,19 @@ export class RowService {
   ){}
 
   getRows(): Promise<Row[]>{
-    return this.http.get(this.rowsUrl)
+    return this.http.get('app/rows-mock.json')
       .toPromise()
       .then(res => res.json().data as Row[])
       .catch(this.handleError);
   }
 
   getProgress(): Promise<Row[]>{
-    return this.http.get('./progress-mock.json')
+    return this.http.get('app/progress-mock.json')
       .toPromise()
       .then(res => res.json().data as Row[])
       .catch(this.handleError);
   }
+
 
   create(wbscode: string): Promise<Row> {
     return this.http

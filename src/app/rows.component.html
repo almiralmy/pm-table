@@ -36,6 +36,11 @@
     <!--<button class="delete" (click)="delete(row); $event.stopPropagation()">x</button>-->
   </li>
 </ul>
+<!--<ul>
+  <li *ngFor="let prog of progress">
+    <div>{{prog.id}} - {{prog.progress}}</div>
+  </li>
+</ul>-->
 <div *ngIf="selectedRow">
   <h2>
     {{selectedRow.wbscode | uppercase}} is my Selected Row!!
