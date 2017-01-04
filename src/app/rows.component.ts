@@ -28,9 +28,20 @@ export class RowsComponent implements OnInit {
 
   getProgress(): void {
     console.log("Progress Start");
+    let instance: RowsComponent = this;
     this.rowService
       .getProgress()
-      .then(progress => this.progress = progress);
+      .then(progress => {
+        this.progress = progress;
+        console.log("Inside Progress Success");
+        //console.log(progress);
+        for(let prg of progress){
+          //Per ogni elemento di progress, cerco il rispettivo in rows e aggiorno il valore
+          //di progress.
+          //console.log(this.rows)
+          this.rows.filter(item => item.id === prg.id)[0].progress = prg.progress;
+        }
+      });
       console.log("Progress End");
   }
 
