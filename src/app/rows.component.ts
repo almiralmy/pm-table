@@ -34,7 +34,6 @@ export class RowsComponent implements OnInit {
       .then(progress => {
         this.progress = progress;
         //console.log("Inside Progress Success");
-        //console.log(progress);
         for(let prg of progress){
           //Per ogni elemento di progress, cerco il rispettivo in rows e aggiorno il valore di progress.
           this.rows.filter(item => item.id === prg.id)[0].progress = prg.progress;
