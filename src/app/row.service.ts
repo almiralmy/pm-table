@@ -30,6 +30,24 @@ export class RowService {
       .catch(this.handleError);
   }
 
+  getActualCosts(): Promise<Row[]>{
+    console.log("Service Start Costs");
+    return this.http.get('app/costs-mock.json')
+      .toPromise()
+      .then(res => res.json().data as Row[])
+      .catch(this.handleError);
+  }
+
+  
+  /*updateRow(row: Row): Promise<Row> {
+    const url = `${this.rowsUrl}/${row.id}`;
+    return this.http.post(url, JSON.stringify({row: row}), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json().data as Row)
+      .catch(this.handleError);
+
+  }*/
+
 
   create(wbscode: string): Promise<Row> {
     return this.http

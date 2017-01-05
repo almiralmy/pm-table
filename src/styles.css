@@ -24,3 +24,8 @@
   height: 50px;
   font-weight: bold;
 }
+
+.inlineEditForm {
+    position: relative;
+    z-index:10;
+}

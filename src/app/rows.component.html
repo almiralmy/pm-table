@@ -27,11 +27,15 @@
       <div class="col-md-1">{{row.wbscode}}</div>
       <inline-editor class="col-md-4" type="text" [(ngModel)]="row.description" (onSave)="saveEditable($event)" name="editableText1" size="8" min="3" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>
       <!--<span>{{row.description}}</span>-->
-      <div class="col-md-1">{{row.pv}}</div>
-      <div class="col-md-1">{{row.progress}}</div>
-      <div class="col-md-1">{{row.ev}}</div>
-      <div class="col-md-1">{{row.ac}}</div>
-      <div class="col-md-1">{{row.cv}}</div>
+      <inline-editor class="col-md-1" type="number" [(ngModel)]="row.pv" (change)="recalcValues(row)" (onSave)="saveEditable($event)" name="editableText1" size="100" min="0" max="100" [fnErrorLength]="fnErrorLength"></inline-editor>
+      <!--<div class="col-md-1">{{row.pv}}</div>-->
+      <inline-editor class="col-md-1" type="number" [(ngModel)]="row.progress" (change)="recalcValues(row)" (onSave)="saveEditable($event)" name="editableText1" size="100" min="0" max="100" [fnErrorLength]="fnErrorLength"></inline-editor>
+      <!--<div class="col-md-1">{{row.progress}}</div>-->
+      <!--<div class="col-md-1" [(ngModel)]="row.ev">{{row.ev | number: '1.0-1'}}</div>-->
+      <!--<inline-editor class="col-md-1" type="number" [(ngModel)]="row.ev" disabled="true" (onSave)="saveEditable($event)" name="editableText1" size="100" min="0" max="100" [fnErrorLength]="fnErrorLength"></inline-editor>-->
+      <div class="col-md-1">{{row.ev | number: '1.0-1'}}</div>
+      <div class="col-md-1">{{row.ac | number: '1.0-1'}}</div>
+      <div class="col-md-1">{{row.cv | number: '1.0-1'}}</div>
     </div>
     <!--<button class="delete" (click)="delete(row); $event.stopPropagation()">x</button>-->
   </li>
