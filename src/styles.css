@@ -25,6 +25,13 @@
   font-weight: bold;
 }
 
+.list-group-item.selected{
+  border-width: thin;
+  border-color: green;
+  position: relative;
+  z-index:10;
+}
+
 .inlineEditForm {
     position: relative;
     z-index:10;
