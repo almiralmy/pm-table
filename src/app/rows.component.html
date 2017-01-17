@@ -17,14 +17,15 @@
     <div class="col-md-1">A.C.</div>
     <div class="col-md-1">C.V.</div>
   </li>
-  <li *ngFor="let row of rows" draggable="true" [class.selected]="row === selectedRow" (click)="onSelect(row)" class="list-group-item {{row.enabled}}">
+  <li *ngFor="let row of rows" draggable="true" [class.selected]="row === selectedRow" (click)="onSelect(row)" (change)="recalcTotals(rows)" class="list-group-item {{row.enabled}}">
     <div [ngSwitch]="row.enabled" class="actions col-md-1">
-      <template [ngSwitchCase]="true"><button (click)="disable(row)">Disable Row</button></template>
-      <template [ngSwitchCase]="false"><button  (click)="enable(row)">Enable Row</button></template>
+      <template [ngSwitchCase]="true"><input type="button" title="disable row" class="btnDisable" (click)="disable(row)" /></template>
+      <template [ngSwitchCase]="false"><input type="button"  title="enable row" class="btnEnable" (click)="enable(row)" /></template>
     </div>
     <div class="element row">
       <div class="col-md-1">{{row.id}}</div>
-      <div class="col-md-1">{{row.wbscode}}</div>
+      <!--<div class="col-md-1">{{row.wbscode}}</div>-->
+      <inline-editor class="col-md-1" type="text" [(ngModel)]="row.wbscode" (onSave)="saveEditable($event)" name="editableText1" size="8" min="2" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>
       <inline-editor class="col-md-4" type="text" [(ngModel)]="row.description" (onSave)="saveEditable($event)" name="editableText1" size="8" min="3" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>
       <!--<span>{{row.description}}</span>-->
       <inline-editor class="col-md-1" type="number" [(ngModel)]="row.pv" (change)="recalcValues(row)" (onSave)="saveEditable($event)" name="editableText1" size="100" min="0" max="100" [fnErrorLength]="fnErrorLength"></inline-editor>
@@ -38,6 +39,17 @@
       <div class="col-md-1">{{row.cv | number: '1.0-1'}}</div>
     </div>
     <!--<button class="delete" (click)="delete(row); $event.stopPropagation()">x</button>-->
+  </li>
+  <li class="list-group-item title">
+    <div class="col-md-4">TOTAL:</div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1">{{totalEV | number: '1.0-1'}}</div>
+    <div class="col-md-1">{{totalAC | number: '1.0-1'}}</div>
+    <div class="col-md-1">{{totalCV | number: '1.0-1'}}</div>
   </li>
 </ul>
 <!--<ul>

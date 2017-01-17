@@ -16,11 +16,14 @@ export class RowsComponent implements OnInit {
   progress: Row[];
   costs: Row[];
   selectedRow: Row;
+  totalEV: number;
+  totalAC: number;
+  totalCV: number;
 
   constructor(private rowService: RowService){}
 
   getRows(): void {
-    console.log("Rows Start");
+    console.log("Rows Start 1");
     this.rowService
       .getRows()
       .then(rows => this.rows = rows);
@@ -34,7 +37,7 @@ export class RowsComponent implements OnInit {
       .getProgress()
       .then(progress => {
         this.progress = progress;
-        //console.log("Inside Progress Success");
+        console.log("Inside Progress Success");
         for(let prg of progress){
           //Per ogni elemento di progress, cerco il rispettivo in rows e aggiorno il valore di progress.
           let item = this.rows.filter(item => item.id === prg.id)[0];
@@ -48,6 +51,9 @@ export class RowsComponent implements OnInit {
   getActualCosts(): void {
     console.log("Actual Costs Start");
     let instance: RowsComponent = this;
+    this.totalEV=0;
+    this.totalAC=0;
+    this.totalCV=0;
     this.rowService
       .getActualCosts()
       .then(costs => {
@@ -57,6 +63,9 @@ export class RowsComponent implements OnInit {
           if (item != undefined){
             item.ac = cost.ac/8;
             item.cv = item.ev-item.ac;
+            this.totalEV += item.ev;
+            this.totalAC += item.ac;
+            this.totalCV += item.cv
           }
         }
       });
@@ -73,9 +82,9 @@ export class RowsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getRows();
-    this.getProgress();
-    this.getActualCosts();
+    Promise.all([this.getRows()]);
+    Promise.all([this.getProgress()]);
+    Promise.all([this.getActualCosts()]);
   }
 
   onSelect(row: Row): void {
@@ -85,6 +94,17 @@ export class RowsComponent implements OnInit {
   recalcValues(row: Row): void {
     row.ev = row.pv * row.progress / 100;
     row.cv = row.ev - row.ac;
+  }
+
+  recalcTotals(rows: Row[]): void {
+      this.totalEV = 0;
+      this.totalAC = 0;
+      this.totalCV = 0;
+    for(let r of rows){
+      this.totalEV += r.ev;
+      this.totalAC += r.ac;
+      this.totalCV += r.cv;
+    }
   }
 
   /*updateRow(row: Row): void {

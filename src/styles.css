@@ -36,3 +36,21 @@
     position: relative;
     z-index:10;
 }
+
+.btnDisable {
+    cursor:pointer;
+    border: 0px;
+    padding: 0px 10px 0px 10px;
+    background:url('resources/images/slash.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btnEnable {
+    cursor:pointer;
+    border: 0px;
+    margin: 0 0 0 0;
+    background:url('resources/images/tick.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}

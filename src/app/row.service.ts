@@ -38,7 +38,6 @@ export class RowService {
       .catch(this.handleError);
   }
 
-  
   /*updateRow(row: Row): Promise<Row> {
     const url = `${this.rowsUrl}/${row.id}`;
     return this.http.post(url, JSON.stringify({row: row}), {headers: this.headers})
