@@ -22,18 +22,17 @@ export class RowsComponent implements OnInit {
 
   constructor(private rowService: RowService){}
 
-  getRows(): void {
+  getRows(): Promise<Row[]> {
     console.log("Rows Start 1");
-    this.rowService
+    return this.rowService
       .getRows()
       .then(rows => this.rows = rows);
-      console.log("Rows End");
   }
 
-  getProgress(): void {
+  getProgress(): Promise<Row[]> {
     console.log("Progress Start");
     let instance: RowsComponent = this;
-    this.rowService
+    return this.rowService
       .getProgress()
       .then(progress => {
         this.progress = progress;
@@ -44,13 +43,17 @@ export class RowsComponent implements OnInit {
             item.progress = prg.progress;
             item.ev = item.pv * item.progress / 100;
         }
+        return progress;
       });
-      console.log("Progress End");
+      //console.log("Progress End");
+      //return new Promise((resolve) => {
+      //  console.log("End Progress Promise");
+      //});
   }
 
   getActualCosts(): void {
     console.log("Actual Costs Start");
-    let instance: RowsComponent = this;
+    //let instance: RowsComponent = this;
     this.totalEV=0;
     this.totalAC=0;
     this.totalCV=0;
@@ -82,9 +85,32 @@ export class RowsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    Promise.all([this.getRows()]);
-    Promise.all([this.getProgress()]);
-    Promise.all([this.getActualCosts()]);
+    let RowsComponent = this;
+    /*
+    Promise.all([this.getRows(),
+                 this.getProgress(),
+                 this.getActualCosts()]);
+    */
+    this.getRows().then((resolve) => {
+      this.getProgress().then((resolve) => {
+        this.getActualCosts();
+      })
+    });
+
+    //Promise.all([this.getRows().then(this.getProgress().then(getActualCosts()))]);
+    //Promise.all([this.getRows().then(() => {
+    //  Promise.all([this.getProgress().then(() => {
+    //    this.getActualCosts();
+    //  })])
+    //})]);
+    //,
+    //            this.getProgress(),
+    //            this.getActualCosts()
+    //]);
+    //Promise.all([this.getProgress()]);
+    //Promise.all([this.getActualCosts()]);
+    //Promise.all([this.getProgress()]);
+    //Promise.all([this.getActualCosts()]);
   }
 
   onSelect(row: Row): void {
