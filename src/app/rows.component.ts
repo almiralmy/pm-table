@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Row } from './row';
 //import { Rowprogress } from './rowprogress';
 import { RowService } from './row.service';
+import { RowAddModalComponent } from './row-add.modal';
 //import { InlineEditorDirectives } from 'ng2-inline-editor';
 
 @Component({
