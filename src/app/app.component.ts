@@ -11,9 +11,7 @@ import { RowService } from './row.service';
 })
 export class AppComponent implements OnInit {
 
-  title = 'app works!';
-  //rows: Row[];
-  //progress: Row[];
+  title = 'PM TABLE';
   selectedRow: Row;
 
   constructor(private rowService: RowService){}

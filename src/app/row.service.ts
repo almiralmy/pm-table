@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Row } from './row';
+import { Subject } from 'rxjs/Subject';
 //import { ROWS } from './mock-rows';
 
 @Injectable()
@@ -9,6 +10,22 @@ export class RowService {
 
   private rowsUrl = 'app/rows';
   private headers = new Headers({'Content-Type':'application/json'});
+
+  // Observable sources
+  private addNewRowSource = new Subject<Array<any>>()
+  private addNewRowWbscodeSource = new Subject<string>();
+  private addNewRowDescriptionSource = new Subject<string>();
+  private addNewRowPvSource = new Subject<number>();
+  private addNewRowProgressSource = new Subject<number>();
+
+  //Observable streams
+  newRowAdded$ = this.addNewRowSource.asObservable();
+  /*
+  wbscodeAdded$ = this.addNewRowWbscodeSource.asObservable();
+  descriptionAdded$ = this.addNewRowDescriptionSource.asObservable();
+  pvAdded$ = this.addNewRowPvSource.asObservable();
+  progressAdded$ = this.addNewRowProgressSource.asObservable();
+  */
 
   constructor(
     private http: Http
@@ -46,6 +63,17 @@ export class RowService {
       .catch(this.handleError);
 
   }*/
+
+  addNewRow(newRow:Array<any>):void {
+    //console.log("RowService - addnewrowmethod" + wbscode + "-" + description);
+    this.addNewRowSource.next(newRow);
+    /*
+    this.addNewRowWbscodeSource.next(wbscode);
+    this.addNewRowDescriptionSource.next(description);
+    this.addNewRowPvSource.next(pv);
+    this.addNewRowProgressSource.next(progress);
+    */
+  }
 
 
   create(wbscode: string): Promise<Row> {

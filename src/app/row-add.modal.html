@@ -1,4 +1,13 @@
-<button type="button" class="btn btn-primary" (click)="staticModal.show()">Add new row</button>
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-primary" (click)="staticModal.show()">Add new row</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <p></p>
+  </div>
+</div>
 
 <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
      tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -11,8 +20,7 @@
         </button>
       </div>
       <div class="modal-body">
-        This is static modal, backdrop click will not close it.
-        Click <b>&times;</b> to close modal.
+      <row-form></row-form>
       </div>
     </div>
   </div>

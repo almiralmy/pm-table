@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { RowsComponent } from './rows.component';
 import { RowService } from './row.service';
 import { RowAddModalComponent} from './row-add.modal';
+import { RowFormComponent } from './row-form.component';
 
 import { InlineEditorModule } from 'ng2-inline-editor';
 import { DragulaModule } from '../assets/ng2-dragula/ng2-dragula'
@@ -20,7 +21,8 @@ import { DragulaModule } from '../assets/ng2-dragula/ng2-dragula'
   declarations: [
     AppComponent,
     RowsComponent,
-    RowAddModalComponent
+    RowAddModalComponent,
+    RowFormComponent
   ],
   imports: [
     BrowserModule,

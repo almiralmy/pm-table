@@ -21,7 +21,32 @@ export class RowsComponent implements OnInit {
   totalAC: number;
   totalCV: number;
 
-  constructor(private rowService: RowService){}
+  constructor(private rowService: RowService){
+    rowService.newRowAdded$.subscribe(
+      newRow => {
+        //Gestione aggiunta nuova riga
+        let biggerIndex = this.rows[0].id;
+        for(let r of this.rows){
+          if(r.id > biggerIndex){
+            biggerIndex = r.id;
+          }
+        }
+        //console.log(biggerIndex);
+        let newRowObject = new Row();
+
+        newRowObject.id = biggerIndex+1;
+        newRowObject.wbscode = newRow[0];
+        newRowObject.description = newRow[1];
+        newRowObject.enabled = true;
+        newRowObject.pv=newRow[2];
+        newRowObject.progress=newRow[3];
+        newRowObject.ev = newRowObject.pv * newRowObject.progress / 100;
+
+        this.rows.push(newRowObject);
+        this.getActualCosts();
+
+      });
+  }
 
   getRows(): Promise<Row[]> {
     console.log("Rows Start 1");
@@ -87,31 +112,12 @@ export class RowsComponent implements OnInit {
 
   ngOnInit(): void {
     let RowsComponent = this;
-    /*
-    Promise.all([this.getRows(),
-                 this.getProgress(),
-                 this.getActualCosts()]);
-    */
+
     this.getRows().then((resolve) => {
       this.getProgress().then((resolve) => {
         this.getActualCosts();
       })
     });
-
-    //Promise.all([this.getRows().then(this.getProgress().then(getActualCosts()))]);
-    //Promise.all([this.getRows().then(() => {
-    //  Promise.all([this.getProgress().then(() => {
-    //    this.getActualCosts();
-    //  })])
-    //})]);
-    //,
-    //            this.getProgress(),
-    //            this.getActualCosts()
-    //]);
-    //Promise.all([this.getProgress()]);
-    //Promise.all([this.getActualCosts()]);
-    //Promise.all([this.getProgress()]);
-    //Promise.all([this.getActualCosts()]);
   }
 
   onSelect(row: Row): void {

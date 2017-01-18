@@ -1,0 +1,33 @@
+<!--
+newRow.id = biggerIndex+1;
+newRow.wbscode = wbscode;
+newRow.enabled = true;
+newRow.pv=0;
+newRow.progress=0;
+newRow.ev=0;
+newRow.ac=0;
+newRow.cv=0;
+-->
+<div class="container">
+    <form (ngSubmit)="onSubmit(wbscode.value, description.value, pv.value, progress.value)" #rowForm="ngForm">
+      <div class="form-group">
+        <label for="wbscode">WBSCode*</label>
+        <input type="text" class="form-control" #wbscode id="wbscode" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description*</label>
+        <input type="text" class="form-control" #description id="description" required>
+      </div>
+      <div class="form-group">
+        <label for="pv">Planned Value</label>
+        <input type="number" class="form-control" #pv id="pv" size="3" min="0" max="100" value="0">
+      </div>
+      <div class="form-group">
+        <label for="progress">Progress</label>
+        <input type="number" class="form-control" #progress id="progress" size="3" min="0" max="100" value="0">
+      </div>
+      <button type="submit" class="btn btn-default">Add Row</button>
+      <!--<button type="button" (click)="staticModal.hide()">Close</button>-->
+      <!--<button type="button" class="btn btn-default" (click)="newRow(); rowForm.reset()">Add Row</button>-->
+    </form>
+</div>
