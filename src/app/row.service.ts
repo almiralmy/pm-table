@@ -13,10 +13,12 @@ export class RowService {
 
   // Observable sources
   private addNewRowSource = new Subject<Array<any>>()
+  /*
   private addNewRowWbscodeSource = new Subject<string>();
   private addNewRowDescriptionSource = new Subject<string>();
   private addNewRowPvSource = new Subject<number>();
   private addNewRowProgressSource = new Subject<number>();
+  */
 
   //Observable streams
   newRowAdded$ = this.addNewRowSource.asObservable();

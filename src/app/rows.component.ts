@@ -125,8 +125,8 @@ export class RowsComponent implements OnInit {
   }
 
   recalcValues(row: Row): void {
-    row.ev = row.pv * row.progress / 100;
-    row.cv = row.ev - row.ac;
+      row.ev = row.pv * row.progress / 100;
+      row.cv = row.ev - row.ac;
   }
 
   recalcTotals(rows: Row[]): void {
@@ -134,9 +134,9 @@ export class RowsComponent implements OnInit {
       this.totalAC = 0;
       this.totalCV = 0;
     for(let r of rows){
-      this.totalEV += r.ev;
-      this.totalAC += r.ac;
-      this.totalCV += r.cv;
+        this.totalEV += r.ev;
+        this.totalAC += r.ac;
+        this.totalCV += r.cv;
     }
   }
 
@@ -187,6 +187,12 @@ export class RowsComponent implements OnInit {
   disable(row: Row): void {
     console.log('Disable row with id: ' + row.id);
     row.enabled = false;
+    row.ac = row.ac + row.ev;
+    this.totalEV -= row.ev;
+    this.totalAC += row.ev;
+    this.totalCV -= row.ev;
+    row.cv = 0 - row.ac;
+
     //this.rowService
     //  .disable(row.id)
     //  .then();
@@ -195,6 +201,12 @@ export class RowsComponent implements OnInit {
   enable(row: Row): void {
     console.log('Enable row with id: ' + row.id);
     row.enabled = true;
+    row.ac = row.ac - row.ev;
+    row.cv = row.ev - row.ac;
+    this.totalEV += row.ev;
+    this.totalAC -= row.ev;
+    this.totalCV += row.ev;
+    
     //this.rowService
     //  .enable(row.id)
     //  .then();
