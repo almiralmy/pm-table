@@ -168,7 +168,6 @@ export class RowsComponent implements OnInit {
     newRow.ac=0;
     newRow.cv=0;
 
-
     this.rows.push(newRow);
     this.getActualCosts();
 
@@ -187,12 +186,13 @@ export class RowsComponent implements OnInit {
   disable(row: Row): void {
     console.log('Disable row with id: ' + row.id);
     row.enabled = false;
+    /*
     row.ac = row.ac + row.ev;
     this.totalEV -= row.ev;
     this.totalAC += row.ev;
     this.totalCV -= row.ev;
     row.cv = 0 - row.ac;
-
+    */
     //this.rowService
     //  .disable(row.id)
     //  .then();
@@ -201,12 +201,13 @@ export class RowsComponent implements OnInit {
   enable(row: Row): void {
     console.log('Enable row with id: ' + row.id);
     row.enabled = true;
+    /*
     row.ac = row.ac - row.ev;
     row.cv = row.ev - row.ac;
     this.totalEV += row.ev;
     this.totalAC -= row.ev;
     this.totalCV += row.ev;
-    
+    */
     //this.rowService
     //  .enable(row.id)
     //  .then();
