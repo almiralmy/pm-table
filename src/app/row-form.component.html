@@ -9,10 +9,15 @@ newRow.ac=0;
 newRow.cv=0;
 -->
 <div class="container">
-    <form (ngSubmit)="onSubmit(wbscode.value, description.value, pv.value, progress.value)" #rowForm="ngForm">
+    <form (ngSubmit)="onSubmit(wbscode.value, description.value, pv.value, progress.value, rowindex.value)" #rowForm="ngForm" id="staticModal">
+      <!-- Campo per gestire numero riga -->
+      <div class="form-group">
+        <label for="rowindex">Row Index</label>
+        <input type="number" class="form-control" #rowindex id="rowindex" min="1" value="1">
+      </div>
       <div class="form-group">
         <label for="wbscode">WBSCode*</label>
-        <input type="text" class="form-control" #wbscode id="wbscode" required>
+        <input type="text" class="form-control" #wbscode id="wbscode"  required>
       </div>
       <div class="form-group">
         <label for="description">Description*</label>
@@ -26,7 +31,7 @@ newRow.cv=0;
         <label for="progress">Progress</label>
         <input type="number" class="form-control" #progress id="progress" size="3" min="0" max="100" value="0">
       </div>
-      <button type="submit" class="btn btn-default">Add Row</button>
+      <button type="submit" class="btn btn-primary">Add</button>
       <!--<button type="button" (click)="staticModal.hide()">Close</button>-->
       <!--<button type="button" class="btn btn-default" (click)="newRow(); rowForm.reset()">Add Row</button>-->
     </form>

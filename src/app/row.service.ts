@@ -12,7 +12,8 @@ export class RowService {
   private headers = new Headers({'Content-Type':'application/json'});
 
   // Observable sources
-  private addNewRowSource = new Subject<Array<any>>()
+  private addNewRowSource = new Subject<Array<any>>();
+  private addedNewRowSource = new Subject<number>();
   /*
   private addNewRowWbscodeSource = new Subject<string>();
   private addNewRowDescriptionSource = new Subject<string>();
@@ -22,6 +23,8 @@ export class RowService {
 
   //Observable streams
   newRowAdded$ = this.addNewRowSource.asObservable();
+  newRowEnded$ = this.addedNewRowSource.asObservable();
+
   /*
   wbscodeAdded$ = this.addNewRowWbscodeSource.asObservable();
   descriptionAdded$ = this.addNewRowDescriptionSource.asObservable();
@@ -75,6 +78,11 @@ export class RowService {
     this.addNewRowPvSource.next(pv);
     this.addNewRowProgressSource.next(progress);
     */
+  }
+
+  addedNewRow(numRows:number):void {
+    this.addedNewRowSource.next(numRows);
+    //staticModal.close();
   }
 
 

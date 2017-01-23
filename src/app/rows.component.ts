@@ -24,6 +24,7 @@ export class RowsComponent implements OnInit {
   constructor(private rowService: RowService){
     rowService.newRowAdded$.subscribe(
       newRow => {
+        //var staticModal: any = document.getElementById('staticModal');
         //Gestione aggiunta nuova riga
         let biggerIndex = this.rows[0].id;
         for(let r of this.rows){
@@ -42,9 +43,13 @@ export class RowsComponent implements OnInit {
         newRowObject.progress=newRow[3];
         newRowObject.ev = newRowObject.pv * newRowObject.progress / 100;
 
-        this.rows.push(newRowObject);
+        //this.rows.push(newRowObject);
+        this.rows.splice(newRow[4]-1, 0, newRowObject);
         this.getActualCosts();
-
+        this.rowService.addedNewRow(this.rows.length);
+        //console.log(staticModal);
+        //staticModal.preventDefault();
+        //staticModal.dialog("close");
       });
   }
 
