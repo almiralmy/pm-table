@@ -9,9 +9,9 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+<div class="modal fade bd-example-modal-lg" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
      tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title pull-left">Add New Row</h4>
@@ -21,9 +21,13 @@
       </div>
       <div class="modal-body">
       <row-form></row-form>
-      <div class="container">
-        <button type="button" class="btn btn-default" (click)="staticModal.hide()">Cancel</button>
-      </div>
+      <!--<div class="container-fluid">
+        <div class="form-group">
+          <div class="col-sm-2">
+            <button type="button" class="btn btn-default" (click)="staticModal.hide()">Cancel</button>
+          </div>
+        </div>
+      </div>-->
       </div>
     </div>
   </div>

@@ -1,37 +1,58 @@
 <!--
-newRow.id = biggerIndex+1;
-newRow.wbscode = wbscode;
-newRow.enabled = true;
-newRow.pv=0;
-newRow.progress=0;
-newRow.ev=0;
-newRow.ac=0;
-newRow.cv=0;
+<div class="modal-body">
+<row-form></row-form>
+<div class="container-fluid">
+  <div class="form-group">
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-default" (click)="staticModal.hide()">Cancel</button>
+    </div>
+  </div>
+</div>
+</div>
 -->
-<div class="container">
-    <form (ngSubmit)="onSubmit(wbscode.value, description.value, pv.value, progress.value, rowindex.value); rowForm.reset();" #rowForm="ngForm">
+<div class="container-fluid">
+    <form (ngSubmit)="onSubmit(wbscode.value, description.value, pv.value, progress.value, rowindex.value); rowForm.reset();" #rowForm="ngForm" class="form-horizontal">
       <!-- Campo per gestire numero riga -->
-      <div class="form-group">
-        <label for="rowindex">Row Index</label>
-        <input type="number" class="form-control" #rowindex id="rowindex" min="1" max="{{numRows+1}}" value="{{numRows+1}}" required>
+      <div class="form-group-sm">
+        <label for="rowindex" class="col-sm-2">Row Index</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" #rowindex id="rowindex" min="1" max="{{numRows+1}}" value="{{numRows+1}}" required>
+        </div>
+      </div>
+      <div class="form-group-sm">
+        <label for="wbscode" class="col-sm-2">WBSCode*</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" #wbscode id="wbscode" value="" required>
+        </div>
       </div>
       <div class="form-group">
-        <label for="wbscode">WBSCode*</label>
-        <input type="text" class="form-control" #wbscode id="wbscode" value="" required>
+        <label for="description" class="col-sm-2">Description*</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" #description id="description" value="" required>
+        </div>
       </div>
       <div class="form-group">
-        <label for="description">Description*</label>
-        <input type="text" class="form-control" #description id="description" value="" required>
+        <label for="pv" class="col-sm-2">Planned Value</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" #pv id="pv" size="3" min="0" max="100" value=0>
+        </div>
       </div>
       <div class="form-group">
-        <label for="pv">Planned Value</label>
-        <input type="number" class="form-control" #pv id="pv" size="3" min="0" max="100" value=0>
+        <label for="progress" class="col-sm-2">Progress %</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" #progress id="progress" size="3" min="0" max="100" value=0>
+        </div>
       </div>
+      <!-- Sezione per gestire messaggio ok/error in merito alla riga aggiunta -->
+      <!--<div class="form-group">
+        <div class="hidden" id="rowaddedsuccess" class="alert alert-success" role="alert">New row added</div>
+        <div class="hidden" id="rowaddeddanger" class="alert alert-danger" role="alert">Error adding row</div>
+      </div>-->
       <div class="form-group">
-        <label for="progress">Progress</label>
-        <input type="number" class="form-control" #progress id="progress" size="3" min="0" max="100" value=0>
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">Add</button>
       <!--<button type="button" (click)="staticModal.hide()">Close</button>-->
       <!--<button type="button" class="btn btn-default" (click)="newRow(); rowForm.reset()">Add Row</button>-->
     </form>

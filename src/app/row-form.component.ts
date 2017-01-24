@@ -10,7 +10,6 @@ import { RowService } from './row.service';
 export class RowFormComponent {
 
   numRows: number;
-  wbscode:HTMLInputElement;
   submitted = false;
 
   constructor(private rowService: RowService){
@@ -20,11 +19,25 @@ export class RowFormComponent {
         console.log("Num rows totale: " + numRows);
         //Pulizia finestra e salvataggio totale righe
         this.numRows = numRows;
-        
+
         wbscode.value = "";
         description.value="";
         pv.value=0;
         progress.value=0;
+
+        this.submitted=false;
+
+        /*
+        function successRegistrationContact() {
+			       $("form[name=registration-contact]").append('<div class="form-successo"><i class="fa fa-check"></i>La registrazione &egrave stata eseguita con successo.</div>').queue(function(next) {
+				           //$('.form-successo').fadeOut(3000);
+				               //$(next).dequeue();
+			       });
+			       return true;
+		   }
+       */
+        //console.log(rowaddedsuccess);
+        //console.log(rowaddeddanger);
         //console.log("numrighe: " + this.numRows);
       });
   }

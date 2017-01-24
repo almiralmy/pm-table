@@ -5,6 +5,7 @@ import { Row } from './row';
 import { RowService } from './row.service';
 import { RowAddModalComponent } from './row-add.modal';
 //import { InlineEditorDirectives } from 'ng2-inline-editor';
+import { RowProgressbarComponent } from './row-progressbar';
 
 @Component({
   //moduleId: module.id,
