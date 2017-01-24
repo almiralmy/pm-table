@@ -121,6 +121,9 @@ export class RowsComponent implements OnInit {
     this.getRows().then((resolve) => {
       this.getProgress().then((resolve) => {
         this.getActualCosts();
+        //Usato per passare il numero totale di righe al componente
+        console.log("Numero righe " + this.rows.length);
+        this.rowService.addedNewRow(this.rows.length);
       })
     });
   }

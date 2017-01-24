@@ -9,27 +9,27 @@ newRow.ac=0;
 newRow.cv=0;
 -->
 <div class="container">
-    <form (ngSubmit)="onSubmit(wbscode.value, description.value, pv.value, progress.value, rowindex.value)" #rowForm="ngForm" id="staticModal">
+    <form (ngSubmit)="onSubmit(wbscode.value, description.value, pv.value, progress.value, rowindex.value); rowForm.reset();" #rowForm="ngForm">
       <!-- Campo per gestire numero riga -->
       <div class="form-group">
         <label for="rowindex">Row Index</label>
-        <input type="number" class="form-control" #rowindex id="rowindex" min="1" value="1">
+        <input type="number" class="form-control" #rowindex id="rowindex" min="1" max="{{numRows+1}}" value="{{numRows+1}}" required>
       </div>
       <div class="form-group">
         <label for="wbscode">WBSCode*</label>
-        <input type="text" class="form-control" #wbscode id="wbscode"  required>
+        <input type="text" class="form-control" #wbscode id="wbscode" value="" required>
       </div>
       <div class="form-group">
         <label for="description">Description*</label>
-        <input type="text" class="form-control" #description id="description" required>
+        <input type="text" class="form-control" #description id="description" value="" required>
       </div>
       <div class="form-group">
         <label for="pv">Planned Value</label>
-        <input type="number" class="form-control" #pv id="pv" size="3" min="0" max="100" value="0">
+        <input type="number" class="form-control" #pv id="pv" size="3" min="0" max="100" value=0>
       </div>
       <div class="form-group">
         <label for="progress">Progress</label>
-        <input type="number" class="form-control" #progress id="progress" size="3" min="0" max="100" value="0">
+        <input type="number" class="form-control" #progress id="progress" size="3" min="0" max="100" value=0>
       </div>
       <button type="submit" class="btn btn-primary">Add</button>
       <!--<button type="button" (click)="staticModal.hide()">Close</button>-->

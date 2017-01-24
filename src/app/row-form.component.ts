@@ -10,6 +10,8 @@ import { RowService } from './row.service';
 export class RowFormComponent {
 
   numRows: number;
+  wbscode:HTMLInputElement;
+  submitted = false;
 
   constructor(private rowService: RowService){
     rowService.newRowEnded$.subscribe(
@@ -18,21 +20,22 @@ export class RowFormComponent {
         console.log("Num rows totale: " + numRows);
         //Pulizia finestra e salvataggio totale righe
         this.numRows = numRows;
+        
+        wbscode.value = "";
+        description.value="";
+        pv.value=0;
+        progress.value=0;
+        //console.log("numrighe: " + this.numRows);
       });
   }
 
-  //powers = ['Really Smart', 'Super Flexible',
-  //          'Super Hot', 'Weather Changer'];
-  //model = new Row(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
-  submitted = false;
   onSubmit(wbscode, description, pv, progress, rowindex) {
     this.submitted = true;
     console.log("Submitting form");
-    console.log(wbscode + "-" + description + "-" + pv + "-" +progress + "-" + rowindex);
+    console.log(wbscode + "-" + description + "-" + pv + "-" + progress + "-" + rowindex);
     this.newRow(wbscode, description, pv, progress, rowindex);
+    //this.reset();
   }
-  // TODO: Remove this when we're done
-  //get diagnostic() { return JSON.stringify(this.model); }
 
   newRow(wbscode, description, pv, progress, rowindex):void {
     this.rowService.addNewRow([wbscode, description, pv, progress, rowindex]);
