@@ -5,13 +5,15 @@ import { Component } from '@angular/core';
   templateUrl: './row-progressbar.html'
 })
 export class RowProgressbarComponent {
-  public max: number = 200;
+  public max: number = 100;
   public showWarning: boolean;
   public dynamic: number;
   public type: string;
 
   public constructor() {
-    this.random();
+    this.dynamic = 30;
+    this.type="success";
+    this.max = 100;
   }
 
   public random(): void {

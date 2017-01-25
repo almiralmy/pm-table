@@ -139,6 +139,7 @@ export class RowsComponent implements OnInit {
   }
 
   recalcTotals(rows: Row[]): void {
+    console.log('Recalc totals!!');
       this.totalEV = 0;
       this.totalAC = 0;
       this.totalCV = 0;
