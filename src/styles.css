@@ -1,12 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 /* Prevent the text contents of draggable elements from being selectable. */
-.list-group-item.gu-transit {
-  background-color: #ddd;
-}
-
 a{
   color: #333 !important;
   border-bottom-color: #333 !important;
+}
+
+.list-group-item {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.list-group-item.gu-transit {
+  background-color: #ddd;
 }
 
 .list-group-item .actions {
@@ -28,9 +33,30 @@ a{
 .list-group-item.title{
   height: 50px;
   font-weight: bold;
+  border-width: thin;
+  border-color: black;
+  position: relative;
+  z-index:20;
+}
+
+.list-group-item.title.totals {
+  position:fixed;
+  bottom:0px;
+  right:0px;
+  left: 0px;
+  width:100%;
+  z-index:0;
+
 }
 
 .list-group-item.selected{
+  /*border-width: thin;
+  border-color: black;
+  position: relative;*/
+  /*z-index:10;*/
+}
+
+.list-group-item:hover{
   border-width: thin;
   border-color: black;
   position: relative;
@@ -76,3 +102,9 @@ a{
     background-color: #ccc;
     opacity: 0.5;
 }
+
+/* Row Styles */
+/*.row {
+  margin-left: -5px !important;
+  margin-right: -5px !important;
+}*/
