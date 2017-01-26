@@ -21,7 +21,15 @@
   <li *ngFor="let row of rows" draggable="true" [class.selected]="row === selectedRow" (click)="onSelect(row)" (change)="recalcTotals(rows)" class="list-group-item {{row.enabled}}">
     <div [ngSwitch]="row.enabled" class="actions col-md-1">
       <template [ngSwitchCase]="true"><input type="button" title="disable row" class="btnDisable" (click)="disable(row)" /></template>
-      <template [ngSwitchCase]="false"><input type="button"  title="enable row" class="btnEnable" (click)="enable(row)" /></template>
+      <template [ngSwitchCase]="false">
+        <div *ngIf="row.ac === 0">
+          <input type="button"  title="enable row" class="btnEnable" (click)="enable(row)" />
+          <input type="button"  title="delete row" class="btnCancel" (click)="cancel(row)" />
+        </div>
+        <div *ngIf="row.ac != 0">
+          <input type="button"  title="enable row" class="btnEnable" (click)="enable(row)" />
+        </div>
+      </template>
     </div>
     <div class="element row">
       <div class="col-md-1">{{row.id}}</div>

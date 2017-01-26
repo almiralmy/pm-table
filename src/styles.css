@@ -68,6 +68,16 @@ a{
     z-index:10;
 }
 
+/* Buttons Styles Enable/Disable/Cancel */
+.btnEnable {
+    cursor:pointer;
+    border: 0px;
+    margin: 0 0 0 0;
+    background:url('resources/images/tick.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .btnDisable {
     cursor:pointer;
     border: 0px;
@@ -77,11 +87,11 @@ a{
     background-position: center;
 }
 
-.btnEnable {
+.btnCancel {
     cursor:pointer;
     border: 0px;
-    margin: 0 0 0 0;
-    background:url('resources/images/tick.gif');
+    padding: 0px 10px 0px 10px;
+    background:url('resources/images/cross.gif');
     background-repeat: no-repeat;
     background-position: center;
 }

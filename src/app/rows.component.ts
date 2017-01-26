@@ -223,6 +223,13 @@ export class RowsComponent implements OnInit {
     //  .then();
   }
 
+  cancel(row: Row): void {
+    console.log('Cancel row with id: ' + row.id);
+    row.enabled = false;
+    this.rows.splice(this.rows.indexOf(row),1);
+    this.getActualCosts();
+  }
+
   /*delete(row: Row): void {
     this.rowService
       .delete(row.id)
