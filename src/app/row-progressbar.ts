@@ -1,38 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'row-progressbar',
   templateUrl: './row-progressbar.html'
 })
-export class RowProgressbarComponent {
+export class RowProgressbarComponent implements OnInit {
+  @Input() dynamic:number;
+  @Input() enabled:boolean;
   public max: number = 100;
   public showWarning: boolean;
-  public dynamic: number;
+  //public dynamic: number;
   public type: string;
 
   public constructor() {
-    this.dynamic = 30;
-    this.type="success";
-    this.max = 100;
+
   }
 
-  public random(): void {
-    let value = Math.floor((Math.random() * 100) + 1);
-    let type: string;
-
-    if (value < 25) {
-      type = 'success';
-    } else if (value < 50) {
-      type = 'info';
-    } else if (value < 75) {
-      type = 'warning';
+  ngOnInit():void {
+    if (this.enabled){
+      this.type='success';
     } else {
-      type = 'danger';
+      this.type='info';
     }
-
-    this.showWarning = (type === 'danger' || type === 'warning');
-    this.dynamic = value;
-    this.type = type;
   }
 
 }

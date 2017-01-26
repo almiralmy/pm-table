@@ -4,6 +4,11 @@
   background-color: #ddd;
 }
 
+a{
+  color: #333 !important;
+  border-bottom-color: #333 !important;
+}
+
 .list-group-item .actions {
   display:inline;
 }
@@ -27,7 +32,7 @@
 
 .list-group-item.selected{
   border-width: thin;
-  border-color: green;
+  border-color: black;
   position: relative;
   z-index:10;
 }
@@ -53,4 +58,21 @@
     background:url('resources/images/tick.gif');
     background-repeat: no-repeat;
     background-position: center;
+}
+
+/* Progress Bar Styles*/
+.progress {
+  height: 10px !important;
+  margin-bottom: 0px !important;
+}
+
+.progress-bar {
+  height: 100%;
+  font-size: 7px !important;
+  line-height: 12px !important;
+}
+
+.progress-bar-info {
+    background-color: #ccc;
+    opacity: 0.5;
 }
