@@ -113,6 +113,61 @@ a{
     opacity: 0.5;
 }
 
+.progress-bar.progress-bar-success0 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(255,0,0));
+}
+
+.progress-bar.progress-bar-success1 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(229,25,0));
+}
+
+.progress-bar.progress-bar-success2 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(204,51,0));
+}
+
+.progress-bar.progress-bar-success3 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(178,76,0));
+}
+
+.progress-bar.progress-bar-success4 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(153,102,0));
+}
+
+.progress-bar.progress-bar-success5 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(127,127,0));
+}
+
+.progress-bar.progress-bar-success6 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(102,153,0));
+}
+
+.progress-bar.progress-bar-success7 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(76,178,0));
+}
+
+.progress-bar.progress-bar-success8 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(51,204,0));
+}
+
+.progress-bar.progress-bar-success9 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(25,229,0));
+}
+
+.progress-bar.progress-bar-success10 {
+  background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(0,255,0));
+}
+
+
+
+/*
+R = (255 * (100 - n)) / 100
+G = (255 * n) / 100
+B = 0
+
+.progress-bar-success {
+    background-color: rgb(255,0,0);
+}*/
+
 /* Row Styles */
 /*.row {
   margin-left: -5px !important;

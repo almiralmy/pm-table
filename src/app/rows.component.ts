@@ -7,6 +7,7 @@ import { RowAddModalComponent } from './row-add.modal';
 //import { InlineEditorDirectives } from 'ng2-inline-editor';
 import { RowProgressbarComponent } from './row-progressbar';
 
+
 @Component({
   //moduleId: module.id,
   selector: 'my-rows',
@@ -14,6 +15,7 @@ import { RowProgressbarComponent } from './row-progressbar';
   styleUrls: ['rows.component.css']
 })
 export class RowsComponent implements OnInit {
+
   rows: Row[];
   progress: Row[];
   costs: Row[];
@@ -21,6 +23,7 @@ export class RowsComponent implements OnInit {
   totalEV: number;
   totalAC: number;
   totalCV: number;
+
 
   constructor(private rowService: RowService){
     rowService.newRowAdded$.subscribe(
@@ -122,7 +125,7 @@ export class RowsComponent implements OnInit {
     this.getRows().then((resolve) => {
       this.getProgress().then((resolve) => {
         this.getActualCosts();
-        //Usato per passare il numero totale di righe al componente
+        //Usato per passare il numero totale di righe al componente modale
         console.log("Numero righe " + this.rows.length);
         this.rowService.addedNewRow(this.rows.length);
       })

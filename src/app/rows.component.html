@@ -47,7 +47,7 @@
       <div class="col-md-1" [innerText]="row.ac | number: '1.0-1'"></div>
       <div class="col-md-1" [innerText]="row.cv | number: '1.0-1'"></div>
     </div>
-    <row-progressbar [dynamic]="row.progress" [enabled]="row.enabled"></row-progressbar>
+    <row-progressbar [(dynamic)]="row.progress" [enabled]="row.enabled"></row-progressbar>
     <!--<button class="delete" (click)="delete(row); $event.stopPropagation()">x</button>-->
   </li>
   <li class="list-group-item title totals">
