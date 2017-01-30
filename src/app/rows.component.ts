@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Row } from './row';
 //import { Rowprogress } from './rowprogress';
@@ -14,7 +14,7 @@ import { RowProgressbarComponent } from './row-progressbar';
   templateUrl: 'rows.component.html',
   styleUrls: ['rows.component.css']
 })
-export class RowsComponent implements OnInit {
+export class RowsComponent implements OnInit, OnChanges {
 
   rows: Row[];
   progress: Row[];
@@ -47,14 +47,27 @@ export class RowsComponent implements OnInit {
         newRowObject.progress=newRow[3];
         newRowObject.ev = newRowObject.pv * newRowObject.progress / 100;
 
-        //this.rows.push(newRowObject);
-        this.rows.splice(newRow[4]-1, 0, newRowObject);
+        let rowItem = this.rows.filter(item => item.wbscode === newRow[4])[0];
+        if (typeof rowItem == "undefined"){
+          this.rows.splice(this.rows.length, 0, newRowObject);
+        } else {
+          this.rows.splice(this.rows.indexOf(rowItem), 0, newRowObject);
+        }
+
         this.getActualCosts();
         this.rowService.addedNewRow(this.rows.length);
+        //this.rowService.addedNewRow(this.rows);
         //console.log(staticModal);
         //staticModal.preventDefault();
         //staticModal.dialog("close");
       });
+  }
+
+  ngOnChanges(changes:SimpleChanges):void {
+    if(changes['progress']) {
+      console.log("New progress value: " + changes['progress'].currentValue);
+
+    }
   }
 
   getRows(): Promise<Row[]> {

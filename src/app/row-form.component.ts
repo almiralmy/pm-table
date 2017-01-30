@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Row }    from './row';
 import { RowService } from './row.service';
 
@@ -8,11 +8,12 @@ import { RowService } from './row.service';
   templateUrl: 'row-form.component.html'
 })
 export class RowFormComponent {
-
+  @Input() actualrows:Array<Object>;
   numRows: number;
   submitted = false;
 
   constructor(private rowService: RowService){
+    console.log(this.actualrows);
     rowService.newRowEnded$.subscribe(
       numRows => {
         //Gestione aggiunta nuova riga
@@ -24,6 +25,7 @@ export class RowFormComponent {
         description.value="";
         pv.value=0;
         progress.value=0;
+        rowindex.value="nowbscode";
 
         this.submitted=false;
 

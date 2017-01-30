@@ -1,10 +1,5 @@
-<!--<h2>PM Table</h2>-->
 <div>
-  <!--<label>Row name:</label> <input #rowName />
-  <button (click)="add(rowName.value); rowName.value=''">
-    Add new row
-  </button>-->
-  <row-add></row-add>
+  <row-add [actualrows]="rows"></row-add>
 </div>
 <ul class="list-group row"  [dragula]='"bag-one"' [dragulaModel]='rows'>
   <li class="list-group-item title">
@@ -39,7 +34,7 @@
       <!--<span>{{row.description}}</span>-->
       <inline-editor class="col-md-1" type="number" [(ngModel)]="row.pv" (onSave)="recalcValues(row); recalcTotals(rows);" (onSave)="saveEditable($event)" name="editableText1" size="100" min="0" max="100" [fnErrorLength]="fnErrorLength"></inline-editor>
       <!--<div class="col-md-1">{{row.pv}}</div>-->
-      <inline-editor class="col-md-1" type="number" [(ngModel)]="row.progress" (onSave)="recalcValues(row); recalcTotals(rows);" (onSave)="saveEditable($event)" name="editableText1" size="100" min="0" max="100" [fnErrorLength]="fnErrorLength"></inline-editor>
+      <inline-editor class="col-md-1" type="number" [(ngModel)]="row.progress" (onSave)="recalcValues(row); recalcTotals(rows);" (onSave)="saveEditable($event)" name="editableText1" size="3" min="1" max="100"></inline-editor>
       <!--<div class="col-md-1">{{row.progress}}</div>-->
       <!--<div class="col-md-1" [(ngModel)]="row.ev">{{row.ev | number: '1.0-1'}}</div>-->
       <!--<inline-editor class="col-md-1" type="number" [(ngModel)]="row.ev" disabled="true" (onSave)="saveEditable($event)" name="editableText1" size="100" min="0" max="100" [fnErrorLength]="fnErrorLength"></inline-editor>-->
@@ -47,7 +42,7 @@
       <div class="col-md-1" [innerText]="row.ac | number: '1.0-1'"></div>
       <div class="col-md-1" [innerText]="row.cv | number: '1.0-1'"></div>
     </div>
-    <row-progressbar [(dynamic)]="row.progress" [enabled]="row.enabled"></row-progressbar>
+    <row-progressbar [dynamic]="row.progress" [enabled]="row.enabled"></row-progressbar>
     <!--<button class="delete" (click)="delete(row); $event.stopPropagation()">x</button>-->
   </li>
   <li class="list-group-item title totals">
