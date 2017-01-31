@@ -24,7 +24,7 @@ export class RowProgressbarComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges):void {
-    console.log('currValue: ' + changes['dynamic'].currentValue);
+    //console.log('currValue: ' + changes['dynamic'].currentValue);
     if(changes['dynamic']) {
       if (this.enabled){
         switch(Number(changes['dynamic'].currentValue)) {

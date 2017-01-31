@@ -157,7 +157,18 @@ a{
   background: -webkit-linear-gradient(left, rgb(255,0,0), rgb(0,255,0));
 }
 
+/* Style per form */
+.form-group-sm .col-sm-10 {
+  margin-bottom: 5px;
+}
 
+.form-group-sm .col-sm-2 {
+  margin-bottom: 5px;
+}
+
+.form-group-sm .col-sm-12 {
+  margin-bottom: 5px;
+}
 
 /*
 R = (255 * (100 - n)) / 100
