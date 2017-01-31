@@ -20,7 +20,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <row-form [actualrows]="actualrows"></row-form>
+      <row-form [actualrows]="actualrows" (closeDialog) = "closeDialog($event)"></row-form>
       <!--<div class="container-fluid">
         <div class="form-group">
           <div class="col-sm-2">

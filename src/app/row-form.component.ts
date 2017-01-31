@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Row }    from './row';
 import { RowService } from './row.service';
 
@@ -9,6 +9,7 @@ import { RowService } from './row.service';
 })
 export class RowFormComponent {
   @Input() actualrows:Array<Object>;
+  @Output() closeDialog: EventEmitter<string> = new EventEmitter();
   numRows: number;
   submitted = false;
 
@@ -52,8 +53,18 @@ export class RowFormComponent {
     //this.reset();
   }
 
+  sendForm(wbscode, description, pv, progress, rowindex) {
+    this.newRow(wbscode, description, pv, progress, rowindex);
+    //Event emitter to close dialog
+    this.closeDialog.emit('closeModal');
+  }
+
+  closeModal():void {
+    this.closeDialog.emit('closeModal');
+  }
+
   newRow(wbscode, description, pv, progress, rowindex):void {
     this.rowService.addNewRow([wbscode, description, pv, progress, rowindex]);
-    console.log("New row addition");
+    //console.log("New row addition");
   }
 }

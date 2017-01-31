@@ -58,10 +58,10 @@
           <button type="submit" class="btn btn-primary">Add and clean</button>
         </div>
         <div class="col-sm-2">
-          <!--<button type="button" class="btn btn-primary" (click)="sumbitForm(); staticModal.hide()">Add and close</button>-->
+          <button type="button" class="btn btn-primary" (click)="sendForm(wbscode.value, description.value, pv.value, progress.value, rowindex.value)">Add and close</button>
         </div>
         <div class="col-sm-2">
-          <!--<button type="button" class="btn btn-secondary" (click)="staticModal.hide()">Cancel</button>-->
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
         </div>
       </div>
       <!--<button type="button" (click)="staticModal.hide()">Close</button>-->

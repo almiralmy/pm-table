@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { RowFormComponent } from './row-form.component';
 
 @Component({
   selector: 'row-add',
@@ -6,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RowAddModalComponent implements OnInit {
   @Input() actualrows:Array<Object>;
+  @ViewChild('staticModal') modal: ElementRef;
 
   constructor() {
   }
@@ -14,7 +16,11 @@ export class RowAddModalComponent implements OnInit {
     console.log(this.actualrows);
   }
 
-
+  closeDialog(event){
+    console.log("evento: " + event + " - chiudere modale");
+    //this.isOpen = false;
+    this.modal.hide();
+  }
 
 
 }
