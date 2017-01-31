@@ -68,8 +68,8 @@ export class RowProgressbarComponent implements OnInit, OnChanges {
     }
   }
 
-  /*ngAfterViewChecked(): void {
-    if (this.enabled){
+  ngAfterViewChecked(): void {
+    /*if (this.enabled){
       console.log("dynamic: " + this.dynamic);
       switch(this.dynamic) {
         case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:
@@ -109,7 +109,7 @@ export class RowProgressbarComponent implements OnInit, OnChanges {
       //this.type='success0';
     } else {
       this.type='info';
-    }
-  }*/
+    }*/
+  }
 
 }

@@ -19,7 +19,7 @@ a{
 }
 
 .list-group-item .element {
-  display:inline;
+  /*display:inline;*/
 }
 
 .list-group-item.false {
@@ -31,7 +31,7 @@ a{
 }
 
 .list-group-item.title{
-  height: 50px;
+  height: 30px;
   font-weight: bold;
   border-width: thin;
   border-color: black;
@@ -46,7 +46,6 @@ a{
   left: 0px;
   width:100%;
   z-index:0;
-
 }
 
 .list-group-item.selected{
@@ -66,6 +65,11 @@ a{
 .inlineEditForm {
     position: relative;
     z-index:10;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 /* Buttons Styles Enable/Disable/Cancel */
