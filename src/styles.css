@@ -72,6 +72,10 @@ a{
     margin-left: 0px;
 }
 
+.col-xs-1 {
+    text-align: center;
+}
+
 /* Buttons Styles Enable/Disable/Cancel */
 .btnEnable {
     cursor:pointer;
@@ -102,7 +106,7 @@ a{
 
 /* Progress Bar Styles*/
 .progress {
-  height: 10px !important;
+  height: 5px !important;
   margin-bottom: 0px !important;
 }
 
