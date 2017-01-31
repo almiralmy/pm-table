@@ -13,7 +13,7 @@
     <div class="col-xs-1">A.C.</div>
     <div class="col-xs-1">C.V.</div>
   </li>
-  <li *ngFor="let row of rows" draggable="true" [class.selected]="row === selectedRow" (click)="onSelect(row)" (change)="recalcTotals(rows)" class="list-group-item {{row.enabled}}">
+  <li *ngFor="let row of rows; let i=index" draggable="true" [class.selected]="row === selectedRow" (click)="onSelect(row)" (change)="recalcTotals(rows)" class="list-group-item {{row.enabled}}">
     <div [ngSwitch]="row.enabled" class="actions col-md-1">
       <template [ngSwitchCase]="true"><input type="button" title="disable row" class="btnDisable" (click)="disable(row)" /></template>
       <template [ngSwitchCase]="false">
@@ -29,13 +29,31 @@
     <div class="element row">
       <div class="col-xs-1">{{row.id}}</div>
       <!--<div class="col-md-1">{{row.wbscode}}</div>-->
-      <inline-editor class="col-xs-1" type="text" [(ngModel)]="row.wbscode" (onSave)="saveEditable($event)" name="editableText1" size="8" min="2" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>
-      <inline-editor class="col-xs-4" type="text" [(ngModel)]="row.description" (onSave)="saveEditable($event)" name="editableText1" size="8" min="3" [fnErrorLength]="fnErrorLength"></inline-editor>
+      <!--<inline-editor class="col-xs-1" type="text" [(ngModel)]="row.wbscode" (onSave)="saveEditable($event)" name="editableText1" size="8" min="2" max="20" [fnErrorLength]="fnErrorLength"></inline-editor>-->
+      <div class="col-xs-1 input-group-sm">
+        <label *ngIf="!(isOn===i)" (click)="isOn=i;">{{row.wbscode}}</label>
+        <input *ngIf="isOn===i" type="text" class="form-control" aria-describedby="basic-addon1" [(ngModel)]="row.wbscode">
+      </div>
+
+      <!--<inline-editor class="col-xs-4" type="text" [(ngModel)]="row.description" (onSave)="saveEditable($event)" name="editableText1" size="8" min="3" [fnErrorLength]="fnErrorLength"></inline-editor>-->
+      <div class="col-xs-4 input-group-sm">
+        <label *ngIf="!(isOn===i)" (click)="isOn=i;">{{row.description}}</label>
+        <input *ngIf="isOn===i" type="text" class="form-control" aria-describedby="basic-addon1" [(ngModel)]="row.description">
+      </div>
+
       <!--<span>{{row.description}}</span>-->
-      <inline-editor class="col-xs-1" type="number" [(ngModel)]="row.pv" (onSave)="recalcValues(row); recalcTotals(rows);" (onSave)="saveEditable($event)" name="editableText1" size="100" min="0" max="100" [fnErrorLength]="fnErrorLength"></inline-editor>
+      <!--<inline-editor class="col-xs-1" type="number" [(ngModel)]="row.pv" (onSave)="recalcValues(row); recalcTotals(rows);" (onSave)="saveEditable($event)" name="editableText1" size="100" min="0" max="100" [fnErrorLength]="fnErrorLength"></inline-editor>-->
       <!--<div class="col-md-1">{{row.pv}}</div>-->
+      <div class="col-xs-1 input-group-sm">
+        <label *ngIf="!(isOn===i)" (click)="isOn=i;">{{row.pv}}</label>
+        <input *ngIf="isOn===i" type="number" class="form-control" aria-describedby="basic-addon1" [(ngModel)]="row.pv" (onSave)="recalcValues(row); recalcTotals(rows);" size="100" min="0" max="100">
+      </div>
+
+
       <div class="col-xs-1">
-        <inline-editor type="number" [(ngModel)]="row.progress" (onSave)="recalcValues(row); recalcTotals(rows);" (onSave)="saveEditable($event)" name="editableText1" size="3" min="1" max="100"></inline-editor>
+        <!--<inline-editor type="number" [(ngModel)]="row.progress" (onSave)="recalcValues(row); recalcTotals(rows);" (onSave)="saveEditable($event)" name="editableText1" size="3" min="1" max="100"></inline-editor>-->
+        <label *ngIf="!(isOn)" (click)="isOn=true;">{{row.pv}}</label>
+        <input *ngIf="isOn" type="number" class="form-control" aria-describedby="basic-addon1" [(ngModel)]="row.progress" (onSave)="recalcValues(row); recalcTotals(rows);" size="100" min="0" max="100">
         <row-progressbar [dynamic]="row.progress" [enabled]="row.enabled"></row-progressbar>
       </div>
       <!--<div class="col-md-1">{{row.progress}}</div>-->

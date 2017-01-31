@@ -76,6 +76,11 @@ a{
     text-align: center;
 }
 
+label {
+  font-weight: 100;
+  cursor:pointer;
+}
+
 /* Buttons Styles Enable/Disable/Cancel */
 .btnEnable {
     cursor:pointer;
