@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { ProgressbarModule } from 'ng2-bootstrap/progressbar';
+import { TooltipModule } from 'ng2-bootstrap/tooltip';
 
 // Imports for loading & configuring the in-memory web api
 //import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -35,7 +36,8 @@ import { DragulaModule } from '../assets/ng2-dragula/ng2-dragula'
     InlineEditorModule,
     DragulaModule,
     ModalModule.forRoot(),
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [RowService],
   bootstrap: [AppComponent]
