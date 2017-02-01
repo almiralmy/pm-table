@@ -36,7 +36,8 @@ a{
   border-width: thin;
   border-color: black;
   position: relative;
-  z-index:20;
+  z-index: 20;
+  pointer-events: none;
 }
 
 .list-group-item.title.totals {
@@ -44,8 +45,9 @@ a{
   bottom:0px;
   right:0px;
   left: 0px;
-  width:100%;
-  z-index:0;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .list-group-item.selected{
