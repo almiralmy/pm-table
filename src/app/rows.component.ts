@@ -26,9 +26,13 @@ export class RowsComponent implements OnInit, OnChanges {
   //@ViewChild('wbscodeinput') wbscodeinput: ElementRef;
   @HostListener('document:keydown.Enter', ['$event'])
   enterClick(event: KeyboardEvent){
-    console.log(event);
     //RiCalcolo valori
     this.calcValues();
+
+    if (this.isOnPrg === true){
+      this.isOnPrg = false;
+      return;
+    };
 
     //Rimozione edit su riga, edit prossima riga enabled.
     for (let indice = this.isOn+1; indice <= this.rows.length; indice++){
@@ -44,7 +48,22 @@ export class RowsComponent implements OnInit, OnChanges {
     }
   };
 
-  @HostListener('document:keydown',['$event'])
+  @HostListener('document:keydown.Esc', ['$event'])
+  escClick(event: KeyboardEvent){
+    console.log(event);
+    //RiCalcolo valori
+    this.calcValues();
+
+    if (this.isOnPrg === true){
+      //TODO  Reset valore, rimettere valore iniziale
+      this.isOnPrg = false;
+    };
+
+    //TODO Rimozione edit su riga, no more edit.
+    this.isOn = '';
+  };
+
+  /*@HostListener('document:keydown',['$event'])
   downClick(event: KeyboardEvent){
     console.log(event);
     if (event.keyCode == 40){
@@ -53,7 +72,7 @@ export class RowsComponent implements OnInit, OnChanges {
       console.log(event.keyCode);
     }
 
-  };
+  };*/
 
 
   constructor(private rowService: RowService){

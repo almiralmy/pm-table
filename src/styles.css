@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 /* Prevent the text contents of draggable elements from being selectable. */
+body {
+  font-family: monospace;
+}
+
 a{
   color: #333 !important;
   border-bottom-color: #333 !important;
@@ -76,6 +80,10 @@ a{
 
 .col-xs-1 {
     text-align: center;
+}
+
+.col-xs-1.results {
+    text-align: right;
 }
 
 label {
