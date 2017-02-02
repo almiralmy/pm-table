@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { Row } from './row';
 //import { Rowprogress } from './rowprogress';
@@ -23,6 +23,37 @@ export class RowsComponent implements OnInit, OnChanges {
   totalEV: number;
   totalAC: number;
   totalCV: number;
+  //@ViewChild('wbscodeinput') wbscodeinput: ElementRef;
+  @HostListener('document:keydown.Enter', ['$event'])
+  enterClick(event: KeyboardEvent){
+    console.log(event);
+    //RiCalcolo valori
+    this.calcValues();
+
+    //Rimozione edit su riga, edit prossima riga enabled.
+    for (let indice = this.isOn+1; indice <= this.rows.length; indice++){
+      if(indice==this.rows.length){
+        this.isOn='';
+        break;
+      }
+
+      if (this.rows[indice].enabled){
+        this.isOn = indice;
+        break;
+      }
+    }
+  };
+
+  @HostListener('document:keydown',['$event'])
+  downClick(event: KeyboardEvent){
+    console.log(event);
+    if (event.keyCode == 40){
+      console.log("arrow down event");
+    }else{
+      console.log(event.keyCode);
+    }
+
+  };
 
 
   constructor(private rowService: RowService){
@@ -69,6 +100,10 @@ export class RowsComponent implements OnInit, OnChanges {
 
     }
   }
+
+  /*setFocus():void {
+      this._renderer.invokeElementMethod(this.wbscodeinput.nativeElement,'focus',[]);
+  }*/
 
   getRows(): Promise<Row[]> {
     console.log("Rows Start 1");
