@@ -170,7 +170,17 @@ export class RowsComponent implements OnInit, OnChanges {
             item.cv = item.ev-item.ac;
             this.totalEV += item.ev;
             this.totalAC += item.ac;
-            this.totalCV += item.cv
+            this.totalCV += item.cv;
+          }
+        }
+        //Gestione rows costs
+        for(let row of this.rows){
+          if (typeof row.ac == "undefined"){
+            row.ac = 0;
+            row.cv = row.ev - row.ac;
+            this.totalEV += row.ev;
+            this.totalAC += row.ac;
+            this.totalCV += row.cv;
           }
         }
       });
